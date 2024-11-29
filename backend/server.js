@@ -5,7 +5,6 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 app.use(express.json());
-const mysql = require('mysql');
 
 const connection = mysql.createConnection({
   host: 'sql102.infinityfree.com',
