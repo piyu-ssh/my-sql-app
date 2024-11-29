@@ -5,12 +5,22 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 app.use(express.json());
+const mysql = require('mysql');
 
-// MySQL Connection
- host: 'sql102.infinityfree.com',
+const connection = mysql.createConnection({
+  host: 'sql102.infinityfree.com',
   user: 'if0_37808752',
   password: 'piyushgupta17',
   database: 'if0_37808752_todo_database'
+});
+
+// Connect to the database
+connection.connect((err) => {
+  if (err) {
+    console.error('Error connecting to the database:', err);
+    return;
+  }
+  console.log('Connected to the database successfully!');
 });
 // Removed my local vars
 // Create Tasks Table
