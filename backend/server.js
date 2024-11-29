@@ -7,20 +7,12 @@ app.use(cors());
 app.use(express.json());
 
 // MySQL Connection
-const pool = mysql.createPool({
-  host: 'localhost',
-  user: 'todoapp',       // Your MySQL username
-  password: 'root',  // Your MySQL password
-  database: 'todo_database'
+ host: 'sql102.infinityfree.com',
+  user: 'if0_37808752',
+  password: 'piyushgupta17',
+  database: 'if0_37808752_todo_database'
 });
-
-// const pool = mysql.createPool({
-//   host: 'sql102.infinityfree.com',                // Replace with your database host
-//   user: 'if0_37808752',                           // Replace with your database username
-//   password: 'piyushgupta17',                      // Replace with your database password
-//   database: 'if0_37808752_todo_database'          // Replace with your database name
-// });
-
+// Removed my local vars
 // Create Tasks Table
 const createTasksTable = async () => {
   try {
@@ -84,7 +76,7 @@ app.put('/todos/:id/toggle', async (req, res) => {
 
 // Initialize
 createTasksTable();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
